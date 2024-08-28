@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+  <meta name = "author" contenet = "Krishaan Bhagat">
+  <title>Whistle Fluctuations Help</title>
+  <link rel="stylesheet" type="text/css" href="whistle.css">
+</head>
+<body>
+    <section id = "interactionContainer">
+        <div class = "homepage">
+            <a class = "startButton" href="/index.html" id = "getBack">Back</a>
+        </div>
+            <div id = "optionContainer">
+            <div class = "buttonHeader">
+                <h1>Which Signal Are You Interested In</h1>
+            </div>
+            <div id = "buttonContainer">
+                <button id = "Start" class = "button">Start Game</button>
+                <button id = "Half" class = "button">Half-Time / Full-Time </button>
+                <button id = "Substitution" class = "button">Substitution</button>
+                <button id = "Foul" class = "button">Foul</button>
+                <button id = "Fight" class = "button">Contain A Possible Fight</button>
+                <button id = "Restart" class = "button">Restart Of Play</button>
+            </div>
+        </div>
+    </section>
+    <section class = "refereeContainer">
+        <div id="whistle">
+        </div>     
+        <div>
+        <audio id="audio1" src="fulltimeWhistle.mp3" preload="auto"></audio>
+        <audio id="audio2" src="start.mp3" preload="auto"></audio>
+        <audio id="audio3" src="restart.mp3" preload="auto"></audio>
+        <audio id = "audio4" src = "foul.mp3" preload = "auto"></audio>
+        <audio id = "audio5" src = "fight.mp3" preload = "auto"></audio>
+        <audio id = "audio6" src = "substitution.mp3" preload = "auto"></audio>
+        </div> 
+    </section> 
+    <script src = whistle.js> </script>
+</body>
+</html>

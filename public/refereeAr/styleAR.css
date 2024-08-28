@@ -1,0 +1,275 @@
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  background-color: lightgrey;
+  width: 100%;
+  }
+
+  .startButton {
+    left: .75%;
+    width: 30px;
+    margin-top:3%;
+    position: relative;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: black 2px 2px 0 0;
+    color: white;
+    cursor: pointer;
+    display:inline-block;
+    font-size: 13px;
+    font-family: "JetBrains Mono",monospace;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .startButton:hover {
+    transform: scale(1.05);
+  }
+  
+  .startButton:active {
+    box-shadow: black 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+  
+  .referee {
+    position: relative;
+    width: 200px;
+    height: 400px;
+    right:100px;
+    top:125px;
+    transform: scale(0.9);
+    margin-bottom: 50px;
+  }
+  
+  .head {
+    width: 100px;
+    height: 100px;
+    background-color: #F2C100;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  
+  .body {
+    width: 120px;
+    height: 240px;
+    background-color: black;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .left-arm,
+  .right-arm {
+    position: absolute;
+    width: 40px;
+    height: 160px;
+    background-color: black;
+    top: 60px;
+  }
+  
+  .right-arm {
+    left: -50px;
+    border-radius: 20px 0 0 20px;
+    transform-origin: top; /* Set the rotation origin to the top */
+    transition: transform 1s ease; /* Add transition for smooth animation */
+  }
+  
+  .left-arm {
+    right: -50px;
+    border-radius: 0 20px 20px 0;
+    transition: transform 1s ease;
+    transform-origin: top;
+  }
+  
+  .flag-stick {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    width: 15px;
+    height: 170px;
+    transform-origin: top;
+    transition: transform 1s ease;
+    background-color: #000;
+  }
+  
+  .flag { 
+    position: absolute;
+    top: 110px;
+    right: -45px;
+    width: 60px;
+    height: 80px;
+    background-image:
+    linear-gradient(45deg, red 50%, yellow 50%);
+   background-size: 20px 20px;
+  }
+  
+  .legs {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 200px;
+    left: 0;
+  }
+  
+  .left-leg,
+  .right-leg {
+    width: 40px;
+    height: 60px;
+    background-color: black;
+    margin: 0 auto;
+  }
+  
+  .left-leg {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+  }
+  
+  .right-leg {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+  }
+  
+  .shoes {
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    top: 320px;
+    left: 0;
+  }
+  
+  .left-shoe,
+  .right-shoe {
+    width: 40px;
+    height: 20px;
+    background-color: black;
+    margin: 0 auto;
+  }
+  
+  .left-shoe {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+  }
+  
+  .right-shoe {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+  }
+
+  .buttons {
+    position: absolute;
+    top: 21%;
+    left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #buttonContainer {
+    position:relative;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    margin-top: 0;
+    bottom: 5px;
+    margin-bottom: 50px;
+  }
+
+  .button {
+    margin-top: 10px;
+    position:relative;
+    width: 250px;
+    border: 2px solid black;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 20px;
+    font-family: "JetBrains Mono",monospace;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 20px;
+    box-shadow:5px 5px 10px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .button:hover {
+    transform: scale(1.05);
+    background-color: #2d7f2f;
+  }
+
+  .button:active {
+    transform: translate(2px, 2px);
+  }
+
+  .buttonHeader {
+    position:relative;
+    height: fit-content;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+  }
+
+  .homepage {
+    display: flex;
+    position: relative;
+    justify-content: left;
+    height: fit-content;
+  }
+
+  #optionContainer {
+    top : 15px;
+    position: relative;
+    height:fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #interactionContainer {
+    position:relative;
+    width: 50%;
+    height: 100%;
+  }
+
+  h1 {
+    position:relative;
+    background-color: #222;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #555;
+    width: 400px;
+  }
+
+  .refereeContainer {
+    position: relative;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    right:50px;
+  }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px) rotate(-5deg); }
+    50% { transform: translateX(10px) rotate(5deg); }
+    75% { transform: translateX(-10px) rotate(-5deg); }
+    100% { transform: translateX(0); }
+  }
+
+  .shake-animation {
+    animation: shake 0.5s infinite;
+  }
+  

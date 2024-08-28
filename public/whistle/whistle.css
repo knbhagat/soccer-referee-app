@@ -1,0 +1,178 @@
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  background-color: lightgrey;
+  width: 100%; /* will need to change this if changes are to be made */
+}
+
+#whistle {  
+  background-image: url("whistle.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 350px; /* Adjust the width as needed */
+  height: 250px; /* Adjust the height as needed */
+  top: 300px;
+  right: 5%;
+  position: relative;
+}
+
+#whistle.shake-animation {
+  animation-name: whistleShake;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes whistleShake {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(1deg);
+  }
+  20% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(1deg);
+  }
+  40% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(1deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+  90% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#buttonContainer {
+    position:relative;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    margin-top: 0;
+    bottom: 5px;
+    margin-bottom: 50px;
+  }
+
+  h1 {
+    position:relative;
+    background-color: #222;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #555;
+    width: 400px;
+  }
+
+  .button {
+    margin-top: 10px;
+    position:relative;
+    width: 250px;
+    border: 2px solid black;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 20px;
+    font-family: "JetBrains Mono",monospace;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 20px;
+    box-shadow:5px 5px 10px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .button:hover {
+  transform: scale(1.05);
+  background-color: #2d7f2f;
+  }
+
+  .button:active {
+    transform: translate(2px, 2px);
+  }
+
+  #interactionContainer {
+    position:relative;
+    width: 50%;
+    height: 100%;
+  }
+
+  #optionContainer {
+    top : 15px;
+    position: relative;
+    height:fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .buttonHeader {
+    position:relative;
+    height: fit-content;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+  }
+
+  .homepage {
+    display: flex;
+    position: relative;
+    justify-content: left;
+    height: fit-content;
+  }
+
+  .startButton {
+    left: .75%;
+    width: 30px;
+    margin-top:3%;
+    position: relative;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: black 2px 2px 0 0;
+    color: white;
+    cursor: pointer;
+    display:inline-block;
+    font-size: 13px;
+    font-family: "JetBrains Mono",monospace;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .startButton:hover {
+    transform: scale(1.05);
+  }
+  
+  .startButton:active {
+    box-shadow: black 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+
+  .refereeContainer {
+    position: relative;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }

@@ -69,11 +69,9 @@ function Chatbot () {
                 messages: [{ role: "user", content: message}]
             })
         }
-        console.log('URL', process.env.REACT_APP_OPENAI_API_URL);
         fetch(process.env.REACT_APP_OPENAI_API_URL, requestOptions)
         .then(res => res.json())
         .then(data => {
-            console.log('data', data);
             _updateLastMessage(data.choices[0].message.content);
         }).catch((error) => {
             console.log(error);

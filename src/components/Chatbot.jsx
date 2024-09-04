@@ -81,7 +81,7 @@ function Chatbot () {
 
     return (
         <>
-            <button id="chatbot-toggle" onClick={() => setChatbot(true)}>
+            <button id="chatbot-toggle" onClick={() => showChatbot ? setChatbot(false) : setChatbot(true)}>
                 <FontAwesomeIcon icon={faMessage} />
             </button>
             <div id="chatbot" className= { showChatbot ? "show" : "" } >

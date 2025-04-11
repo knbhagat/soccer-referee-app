@@ -1,0 +1,10 @@
+# Page 71
+
+OFFSIDE
+OFFSIDE
+Advantage (1) Advantage (2)
+FREFER EKEIC KKICK
+Corner kick Goal kick
+CORNER KICK GOAL KICK PENALTY KICK
+CORNER KICK GOAL KICK PENALTY KICK
+Laws of the Game 2024/25 | Law 5 | The Referee 71

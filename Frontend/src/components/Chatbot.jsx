@@ -69,6 +69,7 @@ function Chatbot () {
                 messages: [{ role: "user", content: message}]
             })
         }
+        console.log("here is my printed api key", process.env.REACT_APP_OPENAI_API_URL)
         fetch(process.env.REACT_APP_OPENAI_API_URL, requestOptions)
         .then(res => res.json())
         .then(data => {

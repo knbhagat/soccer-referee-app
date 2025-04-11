@@ -72,7 +72,8 @@ function Chatbot () {
      */
     function _aiResponse(message) {
         // handles our langchain w RAG rules book vecttorstore and OpenAI API
-        fetch("http://localhost:8000/query", {
+        // use http://localhost:8000/query when testing locally
+        fetch("https://soccer-referee-app.onrender.com/query", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -84,6 +85,7 @@ function Chatbot () {
         })
         .then((data) => {
             // Rag model doesn't find a similar vector in chroma, then we fallback to openAI API
+            console.log("data", data);
             if (data.fallback) {
                 const requestOptions = {
                     method: "POST",

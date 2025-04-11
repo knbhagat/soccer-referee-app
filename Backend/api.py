@@ -17,6 +17,10 @@ app.add_middleware(
 class QueryRequest(BaseModel):
     query_text: str
 
+@app.get("/")
+def root():
+    return {"message": "FastAPI backend is running!"}
+
 @app.post("/query")
 async def query_database(request: QueryRequest):
     result = process_query(request.query_text)

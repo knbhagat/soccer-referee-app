@@ -57,27 +57,60 @@ function Chatbot () {
     }
 
 
+    /**
+     * Handles AI responses by interacting with a backend service and the OpenAI API.
+     * 
+     * This function sends a query message to a backend server at `http://localhost:8000/query`.
+     * If the backend server cannot find a relevant response (e.g., no similar vector within chroma),
+     * it falls back to querying the OpenAI API directly using the GPT-3.5-turbo model.
+     * 
+     * The function updates the last message in the chat interface with the response from either
+     * the backend or the OpenAI API. If an error occurs during any of the fetch requests, 
+     * it logs the error and updates the chat with a default error message.
+     * 
+     * @param {string} message - The user's input message to be processed by the AI.
+     */
     function _aiResponse(message) {
-        const requestOptions = {
+        // handles our langchain w RAG rules book vecttorstore and OpenAI API
+        fetch("http://localhost:8000/query", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
             },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: message}]
-            })
-        }
-        console.log("here is my printed api key", process.env.REACT_APP_OPENAI_API_URL)
-        fetch(process.env.REACT_APP_OPENAI_API_URL, requestOptions)
-        .then(res => res.json())
-        .then(data => {
-            _updateLastMessage(data.choices[0].message.content);
-        }).catch((error) => {
-            console.log(error);
-            _updateLastMessage("I'm sorry, I couldn't understand that. Please try again.");
+            body: JSON.stringify({ query_text: message }),
         })
+        .then(res => {
+            return res.json()
+        })
+        .then((data) => {
+            // Rag model doesn't find a similar vector in chroma, then we fallback to openAI API
+            if (data.fallback) {
+                const requestOptions = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-3.5-turbo",
+                        messages: [{ role: "user", content: message }]
+                    })
+                };
+                fetch(process.env.REACT_APP_OPENAI_API_URL, requestOptions)
+                    .then(res => res.json())
+                    .then(data => {
+                        _updateLastMessage(data.choices[0].message.content);
+                    })
+                    .catch((error) => {
+                        _updateLastMessage("I'm sorry, I couldn't understand that. Please try again.");
+                    });
+            } else {
+                _updateLastMessage(data.response.response || "I'm sorry, I couldn't understand that. Please try again.");
+            }
+        })
+        .catch((error) => {
+            _updateLastMessage("I'm sorry, I couldn't understand that. Please try again.");
+        });
     }
 
     return (

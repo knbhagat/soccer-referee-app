@@ -24,5 +24,4 @@
 /Frontend/yarn-error.log*
 
 # Backend-specific ignores
-/Backend/chroma/
 /Backend/.env

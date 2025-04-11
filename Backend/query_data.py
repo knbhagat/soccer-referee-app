@@ -36,43 +36,50 @@ Steps:
 3. Searches the database for the most relevant results based on the query text.
 4. Formats the retrieved results into a prompt using a predefined template.
 5. Invokes an OpenAI language model to generate a response based on the prompt.
-6. Outputs the response and the sources of the retrieved results.
+6. Formats the response and the sources of the retrieved results.
 
 Returns:
-    None if no relevant results are found or if the similarity score is too low.
-    if results are Found, it prints the formatted response and sources. the format can be highlighted in the
-    prompt template.
+    Error if no relevant results are found or if the similarity score is too low.
+    if results are Found, return a dict: A dictionary containing the response and sources.
 """
 
-def main():
-    # Create CLI.
-    parser = argparse.ArgumentParser()
-    parser.add_argument("query_text", type=str, help="The query text.")
-    args = parser.parse_args()
-    query_text = args.query_text
-
-    # Prepare the DB.
+def process_query(query_text: str):
+    # Create CLI, Prepare the DB.
     embedding_function = OpenAIEmbeddings(openai_api_key=openai.api_key)
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 
     # Search the DB.
     results = db.similarity_search_with_relevance_scores(query_text, k=3)
     if not results or results[0][1] < 0.7:
-        print(f"Unable to find matching results or results are too low ({results[0][1]}).")
-        return
+        return {"error": "No relevant results found or similarity score too low."}
 
+    # Prepare the context and prompt.
     context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
-    print(prompt)
 
+    # Generate response.
     model = ChatOpenAI(openai_api_key=openai.api_key)
     response_text = model.invoke(prompt)
 
+    # Extract sources.
     sources = [doc.metadata.get("source", None) for doc, _score in results]
-    formatted_response = f"Response: {response_text.content}\n\nSources: {sources}"
-    print(formatted_response)
+
+    return {
+        "response": response_text.content,
+        "sources": sources
+    }
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("query_text", type=str, help="The query text.")
+    args = parser.parse_args()
+
+    result = process_query(args.query_text)
+    if "error" in result:
+        print(result["error"])
+    else:
+        print(f"Response: {result['response']}\n\nSources: {result['sources']}")

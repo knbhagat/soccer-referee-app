@@ -85,7 +85,6 @@ function Chatbot () {
         })
         .then((data) => {
             // Rag model doesn't find a similar vector in chroma, then we fallback to openAI API
-            console.log("data", data);
             if (data.fallback) {
                 const requestOptions = {
                     method: "POST",

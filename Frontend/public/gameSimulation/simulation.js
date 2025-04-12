@@ -123,11 +123,9 @@ function changeArray(array, num) { // changes array by subtracting size and retu
   
   // Random function that calls all the transition functions in random order
 function randomTransitions() {
-    console.log(6);
     if (inProgress || gameIsReset) { // keep for now
         return;
     }
-    console.log(7);
     inProgress = true; //prevents run button from being clicked
     flag2 = false; //allows offside button to be clicked
     var num = Math.floor(Math.random() * (modifiedTransitions.length  - 0)); //gets random number 0-9
@@ -241,7 +239,6 @@ function runPlayMenu() {
 }
 
 function buttonMenu() {
-    console.log(5);
     const startButton = document.getElementById("Start");
     const levelButton = document.getElementById("Level");
 

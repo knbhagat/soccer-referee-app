@@ -45,7 +45,7 @@ Returns:
 
 def process_query(query_text: str):
     # Create CLI, Prepare the DB.
-    embedding_function = OpenAIEmbeddings(openai_api_key=openai.api_key)
+    embedding_function = OpenAIEmbeddings()
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 
     # Search the DB.
@@ -59,7 +59,7 @@ def process_query(query_text: str):
     prompt = prompt_template.format(context=context_text, question=query_text)
 
     # Generate response.
-    model = ChatOpenAI(openai_api_key=openai.api_key)
+    model = ChatOpenAI()
     response_text = model.invoke(prompt)
 
     # Extract sources.

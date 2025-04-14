@@ -3,25 +3,41 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { React, useState, useRef, useEffect } from "react";
 import './Chatbot.css';
 
+/**
+ * Chatbot Component
+ * A React component that implements a chat interface with AI capabilities.
+ * Features include:
+ * - Toggleable chat window
+ * - Real-time message updates
+ * - Auto-scrolling chat history
+ * - Integration with backend AI services
+ */
 function Chatbot () {
+    // State management for chatbot visibility and messages
     const [showChatbot, setChatbot] = useState(false);
     const [chatInput, setChatInput] = useState("");
+    // Initialize chat history with a welcome message
     const [chatHistory, setChatHistory] = useState([{className: 'incoming', message: (<>Hi there 🤗<br /> How can I help you today?</>)}]);
 
+    // Reference to the chat box for auto-scrolling
     const chatBoxRef = useRef(null);
 
-    // Use useEffect to scroll to the bottom when chatHistory changes
+    // Auto-scroll to bottom when new messages are added
     useEffect(() => {
         if (chatBoxRef.current) {
             chatBoxRef.current.scrollTo(0, chatBoxRef.current.scrollHeight);
         }
     }, [chatHistory]);
 
+    /**
+     * Updates the last message in the chat history
+     * @param {ReactNode} newMessage - The new message content to display
+     */
     const _updateLastMessage = (newMessage) => {
         setChatHistory((prevHistory) => {
           if (prevHistory.length === 0) return prevHistory;
     
-          // Directly update the last message
+          // Create a new array with the updated last message
           const updatedHistory = [...prevHistory];
           updatedHistory[updatedHistory.length - 1] = {
             ...updatedHistory[updatedHistory.length - 1],
@@ -32,20 +48,28 @@ function Chatbot () {
         });
     };
 
+    /**
+     * Handles changes in the chat input field
+     * @param {Event} event - The input change event
+     */
     const handleInputChange = (event) => {
         setChatInput(event.target.value);
     }
 
+    /**
+     * Processes user input and triggers AI response
+     * Adds user message to chat history and initiates AI response after a delay
+     */
     const handleChat = () => {
         const message = chatInput.trim()
         if (message) {
-            // users chat
+            // Add user's message to chat history
             setChatHistory((prevHistory) => [
                 ...prevHistory,
                 { message: message, className: 'outgoing' }
             ]);
             setChatInput("")
-            // ai's chat
+            // Simulate AI typing and trigger response
             setTimeout(() => {
                 setChatHistory((prevHistory) => [
                     ...prevHistory, 
@@ -56,23 +80,16 @@ function Chatbot () {
         }
     }
 
-
     /**
-     * Handles AI responses by interacting with a backend service and the OpenAI API.
+     * Handles AI responses by interacting with backend services
+     * Implements a two-tier response system:
+     * 1. First attempts to get response from custom RAG model
+     * 2. Falls back to OpenAI API if no relevant response is found
      * 
-     * This function sends a query message to a backend server at `http://localhost:8000/query`.
-     * If the backend server cannot find a relevant response (e.g., no similar vector within chroma),
-     * it falls back to querying the OpenAI API directly using the GPT-3.5-turbo model.
-     * 
-     * The function updates the last message in the chat interface with the response from either
-     * the backend or the OpenAI API. If an error occurs during any of the fetch requests, 
-     * it logs the error and updates the chat with a default error message.
-     * 
-     * @param {string} message - The user's input message to be processed by the AI.
+     * @param {string} message - The user's input message
      */
     function _aiResponse(message) {
-        // handles our langchain w RAG rules book vecttorstore and OpenAI API
-        // use http://localhost:8000/query when testing locally
+        // Primary attempt: Query custom RAG model endpoint
         fetch("https://soccer-referee-app.onrender.com/query", {
             method: "POST",
             headers: {
@@ -84,7 +101,7 @@ function Chatbot () {
             return res.json()
         })
         .then((data) => {
-            // Rag model doesn't find a similar vector in chroma, then we fallback to openAI API
+            // Fallback to OpenAI if RAG model doesn't find relevant response
             if (data.fallback) {
                 const requestOptions = {
                     method: "POST",
@@ -97,6 +114,7 @@ function Chatbot () {
                         messages: [{ role: "user", content: message }]
                     })
                 };
+                // Secondary attempt: Query OpenAI API directly
                 fetch(process.env.REACT_APP_OPENAI_API_URL, requestOptions)
                     .then(res => res.json())
                     .then(data => {
@@ -106,6 +124,7 @@ function Chatbot () {
                         _updateLastMessage("I'm sorry, I couldn't understand that. Please try again.");
                     });
             } else {
+                // Use RAG model response if available
                 _updateLastMessage(data.response.response || "I'm sorry, I couldn't understand that. Please try again.");
             }
         })
@@ -114,18 +133,23 @@ function Chatbot () {
         });
     }
 
+    // Render the chatbot interface
     return (
         <>
+            {/* Toggle button for showing/hiding chatbot */}
             <button id="chatbot-toggle" onClick={() => showChatbot ? setChatbot(false) : setChatbot(true)}>
                 <FontAwesomeIcon icon={faMessage} />
             </button>
+            {/* Main chatbot container */}
             <div id="chatbot" className= { showChatbot ? "show" : "" } >
+                {/* Chatbot header with close button */}
                 <header>
                     <h2>
                         Chatbot
                     </h2>
                     <FontAwesomeIcon icon={faX} onClick={() => setChatbot(false)} />
                 </header>
+                {/* Chat message history */}
                 <ul id="chatbox" ref={chatBoxRef}>
                     {chatHistory.map((chat, index) => {
                         return (
@@ -135,6 +159,7 @@ function Chatbot () {
                             </li>)
                     })}
                 </ul>
+                {/* Chat input area */}
                 <div id="chat-input">
                     <textarea placeholder="Enter a message..." value={chatInput} onChange={handleInputChange} required></textarea>
                     <FontAwesomeIcon icon={faPaperPlane} onClick = {handleChat} />

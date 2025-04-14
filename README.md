@@ -1,6 +1,6 @@
 # Soccer Referee Assistant Platform
 
-A sophisticated web application leveraging advanced AI technologies to provide comprehensive soccer referee training and rule clarification. This platform integrates Retrieval-Augmented Generation (RAG) with OpenAI's GPT models to deliver contextually accurate responses from the official FIFA rulebook.
+A comprehensive web application designed to enhance soccer referee training and provide accurate rule clarification. The platform combines advanced AI technology, including Retrieval-Augmented Generation (RAG) and OpenAI's GPT models, to deliver precise responses from the official FIFA rulebook. Additional features include interactive hand signal demonstrations, whistle technique training, and an offside simulation tool to help referees develop and refine their skills.
 
 ## Core Architecture
 

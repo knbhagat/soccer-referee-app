@@ -125,7 +125,20 @@ function Chatbot () {
                     });
             } else {
                 // Use RAG model response if available
-                _updateLastMessage(data.response.response || "I'm sorry, I couldn't understand that. Please try again.");
+                _updateLastMessage(
+                    (() => {
+                        const sources = data.response.sources;
+                        if (sources && sources.length > 0) {
+                            const firstSource = sources[0]; // Get the first source
+                            const match = firstSource.match(/page_(\d+)\.md/); // Extract the page number
+                            if (match) {
+                                const formattedSource = `page ${match[1]}`; // Format as "page X"
+                                return `From ${formattedSource} of the referee handbook, ${data.response.response}`;
+                            }
+                        }
+                        return "I'm sorry, I couldn't understand that. Please try again."; // Fallback message
+                    })()
+                );
             }
         })
         .catch((error) => {

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <meta name = "author" contenet = "Krishaan Bhagat">
+        <title>
+            Game Simulation
+        </title>
+        <link rel = "stylesheet" href = "simulation.css" type = "text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <a class = "startButton" id = "goBack" href ="/index.html">Back</a>
+        <div id = "popUpBox">
+            <div id = "informationBox">
+            <h3>
+              How To Play
+            </h3>
+            <p>
+                Once you click "Start Game", the simulation will score you on the correctiveness on 10 offside decisions. The offside decisions will simulate only after your choice on Offside or Onside. Each offside play will be played once you click "Run". There is also a difficulty button to adjust the skill level (default level is Medium) and a button to reset the simulation.
+            </p>
+            <button id = "continue" onclick="closeInfo()">
+                Continue
+            </button>
+            </div>
+        </div>
+        <div id = "blurContainer">
+            <section class="header">
+                <div id = "offsideContainer">
+                    <h1>
+                        Choose between Offside And Onside
+                    </h1>
+                    <div id = "buttonContainer">
+                        <button id = "offside" class = "button">
+                            Offside
+                        </button>
+                        <button id = "notOffside" class = "button">
+                            Onside
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section class = "middleRow">
+                <section class = "settingBox">
+                    <div class = "GetInfoBox">
+                        <h3 id = infoText >
+                            Once you click "Start Game", the simulation <br> will score  you on the correctiveness <br> on 10 offside decisions. The offside <br> decisions will simulate only after your <br> choice on Offside or Onside. Each offside <br> play will be played once you click "Run".<br> There is also  a difficulty button to adjust <br> the skill level (default level is Medium) <br> and a button to reset the simulation.
+                        </h3>
+                        <i class="fa fa-info-circle" id = "infoIcon" onmouseover="showInfo()" onmouseout="hideInfo()"></i>
+                    </div>
+                    <div id = buttonContainer2>
+                        <button id = "Run" class = "button">
+                            Run
+                        </button>
+                        <button class = "button" id = "Level">
+                            Difficulty Level
+                        </button>
+                        <button class = "button" id = "Reset">
+                            Reset
+                        </button>
+                    </div>
+                </section>
+                <section class = "textBox">
+                    <div id = buttonContainer4>
+                        <button id = "Start">
+                            Start Game
+                        </button>
+                    </div>
+                </section>
+                <section class = "scoreTracker">
+                    <h3 id = "scoreCounter">
+                        Score: 0
+                    </h3>
+                    <div id = "buttonContainer3">
+                        <div class = "containerRow">
+                            <button id = "play1">
+                                --
+                            </button>
+                            <button id = "play2">
+                                --
+                            </button>
+                        </div>
+                        <div class = "containerRow">
+                            <button id = "play3">
+                                --
+                            </button>
+                            <button id = "play4">
+                                --
+                            </button>
+                        </div>
+                        <div class = "containerRow">
+                            <button id = "play5">
+                                --
+                            </button>
+                            <button id = "play6">
+                                --
+                            </button>
+                        </div>
+                        <div class = "containerRow">
+                            <button id = "play7">
+                                --
+                            </button>
+                            <button id = "play8">
+                                --
+                            </button>
+                        </div>
+                        <div class = "containerRow">
+                            <button id = "play9">
+                                --
+                            </button>
+                            <button id = "play10">
+                                --
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section class = "SoccerField">
+                <div class = "field">
+                    <img src="soccerField.png" alt="Soccer Field">
+                    <div class = "Player">
+                        <div id = "Passer">
+                            <div class="head">
+                            </div>
+                            <div class="body offense">
+                            <div class="right-arm">
+                            </div>
+                            <div class="left-arm">
+                            </div>
+                            <div class="legs">
+                                <div class ="left-leg">
+                                </div>
+                                <div class ="right-leg">
+                                </div>
+                            </div>
+                            <div class ="shoes">
+                                <div class = "left-shoe">
+                                </div>
+                                <div class = "right-shoe">
+                                </div>
+                                <img src = "soccerBall.png" id = "Ball">
+                            </div>
+                            </div>
+                        </div>
+                        <div id = "Offender">
+                            <div class="head">
+                            </div>
+                            <div class="body offense">
+                            <div class="right-arm">
+                            </div>
+                            <div class="left-arm">
+                            </div>
+                            <div class="legs">
+                                <div class="left-leg">
+                                </div>
+                                <div class="right-leg">
+                                </div>
+                            </div>
+                            <div class="shoes">
+                                <div class="left-shoe">
+                                </div>
+                                <div class="right-shoe">
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div id = "Defender">
+                            <div class="head">
+                            </div>
+                            <div class="body defense">
+                            <div class="right-arm">
+                            </div>
+                            <div class="left-arm">
+                            </div>
+                            <div class="legs">
+                                <div class="left-leg">
+                                </div>
+                                <div class="right-leg">
+                                </div>
+                            </div>
+                            <div class="shoes">
+                                <div class="left-shoe">
+                                </div>
+                                <div class="right-shoe">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script src = "simulation.js">
+        </script>
+    </body>
+</html>

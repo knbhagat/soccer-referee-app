@@ -1,0 +1,47 @@
+services:
+  # Backend API Service (Development)
+  backend:
+    build: 
+      context: ./Backend/modern_backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./Backend/modern_backend/.env
+    environment:
+      - DEBUG=true
+      - CHROMA_TELEMETRY_ENABLED=false
+      - LANGCHAIN_TRACING_V2=false
+      - LANGCHAIN_ENDPOINT=
+    volumes:
+      - ./Backend/modern_backend:/app
+      - ./Backend/modern_backend/chroma_new:/app/chroma_new
+    restart: unless-stopped
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    networks:
+      - referee-network
+
+  # Frontend Next.js Service (Development)
+  frontend:
+    build: 
+      context: ./Frontend/modern-referee-app
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NODE_ENV=development
+    volumes:
+      - ./Frontend/modern-referee-app:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    restart: unless-stopped
+    command: ["npm", "run", "dev"]
+    networks:
+      - referee-network
+
+networks:
+  referee-network:
+    driver: bridge

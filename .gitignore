@@ -12,16 +12,26 @@
 /Frontend/build
 
 # misc
-/Frontend/.env
 .DS_Store
-/Frontend/.env.local
-/Frontend/.env.development.local
-/Frontend/.env.test.local
-/Frontend/.env.production.local
 
+# Environment variables - ALL .env files
+.env
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging
+
+# Frontend-specific .env files
+/Frontend/.env*
+/Frontend/modern-referee-app/.env*
+
+# Backend-specific .env files
+/Backend/.env*
+/Backend/modern_backend/.env*
+
+# Logs
 /Frontend/npm-debug.log*
 /Frontend/yarn-debug.log*
 /Frontend/yarn-error.log*
-
-# Backend-specific ignores
-/Backend/.env

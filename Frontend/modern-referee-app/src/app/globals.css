@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  /* Application Color Palette */
+  --primary: #2F6B4F;           /* Deep evergreen */
+  --primary-light: #4FA37E;     /* Fresh mint green */
+  --primary-dark: #1F4633;      /* Dark forest green */
+  --accent-1: #F4B400;          /* Warm golden yellow */
+  --accent-2: #F26B38;          /* Muted coral orange */
+  --accent-3: #5C6AC4;          /* Soft indigo */
+  --background-light: #F8F9F8;  /* Soft warm gray-white */
+  --background-dark: #121A16;   /* Deep green-black */
+  --surface-light: #FFFFFF;     /* Pure white for cards/panels */
+  --surface-dark: #1C2420;      /* Dark neutral for cards in dark mode */
+  --border-divider: #D9DED9;    /* Light cool-gray */
+  --text-primary: #1B1B1B;      /* Dark charcoal */
+  --text-secondary: #5F6E65;    /* Muted gray-green */
+  --text-on-dark: #E5EDE9;      /* Soft off-white for dark backgrounds */
+
+  /* Light mode colors */
+  --background: var(--background-light);
+  --foreground: var(--text-primary);
+}
+
+@theme inline {
+  /* Application Color System */
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-background: var(--background-light);
+  --color-background-dark: var(--background-dark);
+  --color-surface: var(--surface-light);
+  --color-surface-dark: var(--surface-dark);
+  --color-border: var(--border-divider);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-on-dark: var(--text-on-dark);
+
+  /* Semantic colors */
+  --color-success: var(--accent-1);
+  --color-warning: var(--accent-2);
+  --color-error: #DC2626;
+  --color-info: var(--accent-3);
+
+  /* Font configuration */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode adjustments */
+    --background: var(--background-dark);
+    --foreground: var(--text-on-dark);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Mobile-specific enhancements */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better scrolling on mobile */
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+  
+  /* Improve text readability on small screens */
+  .text-sm {
+    line-height: 1.5;
+  }
+  
+  /* Better spacing for mobile */
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Better spacing for tablets */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

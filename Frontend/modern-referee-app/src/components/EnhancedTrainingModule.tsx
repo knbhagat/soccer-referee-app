@@ -26,7 +26,12 @@ export default function EnhancedTrainingModule({
 
 
   return (
-    <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-white border border-[#D9DED9]">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-white border border-[#D9DED9] block cursor-pointer"
+    >
       {/* Image Section - Clean and Simple */}
       <div className="relative h-64 overflow-hidden">
         <img
@@ -36,7 +41,6 @@ export default function EnhancedTrainingModule({
         />
         {/* Stronger gradient overlay for better text contrast */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-        
         {/* Completion Badge - Only if completed */}
         {isCompleted && (
           <div className="absolute top-4 right-4 bg-[#F4B400] text-[#1B1B1B] px-3 py-1 rounded-full text-sm font-semibold flex items-center z-10">
@@ -44,7 +48,6 @@ export default function EnhancedTrainingModule({
             Completed
           </div>
         )}
-        
         {/* Content Section - Positioned within image boundaries */}
         <div className="absolute bottom-4 left-4 right-4 sm:right-4 sm:left-auto sm:max-w-xs">
           <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-[#F4B400] transition-colors drop-shadow-lg">
@@ -55,7 +58,6 @@ export default function EnhancedTrainingModule({
           </p>
         </div>
       </div>
-      
       {/* Detailed Description Section */}
       {detailedDescription && (
         <div className="p-4 sm:p-6 bg-white border-t border-[#D9DED9]">
@@ -66,7 +68,6 @@ export default function EnhancedTrainingModule({
           </div>
         </div>
       )}
-      
       {/* Simple Progress Bar - Underneath the module */}
       {relatedAchievement && (
         <div className="p-3 sm:p-4 bg-[#F8F9F8] border-t border-[#D9DED9]">
@@ -82,6 +83,6 @@ export default function EnhancedTrainingModule({
           </div>
         </div>
       )}
-    </div>
+    </a>
   );
 }

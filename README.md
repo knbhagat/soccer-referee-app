@@ -1,6 +1,6 @@
 # Referee Ready
 
-## 🎯 Mission Statement
+## GOAL
 
 **Empowering the Next Generation of Soccer Officials Through AI-Driven Training and Real-Time Rule Clarification**
 
@@ -51,34 +51,32 @@ This platform serves as the definitive digital companion for soccer officials, o
 │  └─────────────────┘  └─────────────────┘  └─────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
+## Core Features & Capabilities
 
-## 🚀 Core Features & Capabilities
-
-### 🤖 AI-Powered Rule Clarification System
+### AI-Powered Rule Clarification System
 - **Retrieval-Augmented Generation (RAG)**: Combines FIFA Laws of the Game with OpenAI's language models for accurate, contextual responses
 - **Real-time Query Processing**: Sub-second response times with confidence scoring
 - **Multi-source Knowledge Base**: Integrates official FIFA documentation, referee training materials, and practical scenarios
 - **Context-Aware Responses**: Understands referee experience levels and provides appropriate guidance
 
-### 🎯 Interactive Training Modules
+### Interactive Training Modules
 - **Hand Signal Mastery**: Comprehensive training for all FIFA-recognized referee signals
 - **Whistle Technique Training**: Audio-visual learning for proper whistle patterns and timing
 - **Offside Decision Simulation**: Real-time scenarios with instant feedback and learning analytics
 - **Assistant Referee Training**: Specialized modules for AR positioning and flag signals
 
-### 📊 Gamified Learning Experience
+### Gamified Learning Experience
 - **Progress Tracking System**: Multi-level achievement system with skill progression tracking
 - **Performance Analytics**: Detailed insights into training performance and improvement areas
 - **Streak Monitoring**: Encourages consistent practice with daily engagement tracking
-- **Achievement Badges**: Recognition system for skill mastery and dedication
-
-### 🔧 Technical Excellence
+- **Achievement Badges**: Recognition system for skill mastery and dedicatio
+### Technical Excellence
 - **Type-Safe Development**: Full TypeScript implementation ensuring code reliability
 - **Responsive Design**: Optimized for all devices from mobile phones to desktop computers
 - **Performance Optimization**: Server-side rendering, code splitting, and efficient bundling
 - **Scalable Architecture**: Microservices-ready design with containerization support
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend Technologies
 | Technology | Version | Purpose |
@@ -105,9 +103,8 @@ This platform serves as the definitive digital companion for soccer officials, o
 | **Docker Compose** | Multi-service orchestration |
 | **Git** | Version control and collaboration |
 | **ESLint/Prettier** | Code quality and formatting |
-| **Jest** | Testing framework |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 soccer-referee-app/
@@ -163,7 +160,7 @@ soccer-referee-app/
 └── 📂 DOCKER_SETUP.md                   # Docker deployment documentation
 ```
 
-## 🚀 Quick Start Guide
+## Quick Start Guide
 
 ### Prerequisites
 - **Node.js** 18.0 or higher
@@ -228,7 +225,7 @@ cp .env.example .env
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -249,7 +246,7 @@ CHROMA_PERSIST_DIRECTORY=./chroma_new
 LOG_LEVEL=INFO
 ```
 
-## 📊 API Documentation
+## API Documentation
 
 ### Core Endpoints
 
@@ -289,43 +286,7 @@ curl http://localhost:8000/api/v1/stats
 }
 ```
 
-## 🧪 Testing & Quality Assurance
-
-### Frontend Testing
-```bash
-cd Frontend/modern-referee-app
-
-# Run unit tests
-npm test
-
-# Run tests with coverage
-npm test -- --coverage
-
-# Run linting
-npm run lint
-
-# Type checking
-npm run type-check
-```
-
-### Backend Testing
-```bash
-cd Backend/modern_backend
-
-# Run unit tests
-pytest
-
-# Run tests with coverage
-pytest --cov=app --cov-report=html
-
-# Run linting
-flake8 app/
-black --check app/
-isort --check-only app/
-mypy app/
-```
-
-## 🚀 Deployment
+## Deployment
 
 ### Production Deployment with Docker
 
@@ -362,7 +323,7 @@ docker build -t referee-api:latest .
 # (Platform-specific deployment commands)
 ```
 
-## 📈 Performance Metrics
+## Performance Metrics
 
 ### System Performance
 - **Response Time**: < 1 second for AI queries
@@ -376,7 +337,7 @@ docker build -t referee-api:latest .
 - **Feature Adoption**: 90% chatbot usage rate
 - **Mobile Usage**: 60% of traffic from mobile devices
 
-## 🔒 Security & Compliance
+## Security & Compliance
 
 ### Security Measures
 - **API Rate Limiting**: Prevents abuse and ensures fair usage
@@ -390,39 +351,7 @@ docker build -t referee-api:latest .
 - **GDPR Compliance**: User data control and transparency
 - **Secure API Communication**: HTTPS encryption for all data transfer
 
-## 🤝 Contributing
-
-We welcome contributions from the soccer referee community and developers alike!
-
-### Development Workflow
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Contribution Guidelines
-- Follow TypeScript and Python best practices
-- Write comprehensive tests for new features
-- Update documentation for any API changes
-- Ensure mobile responsiveness for UI changes
-- Follow the existing code style and conventions
-
-## 📞 Support & Community
-
-### Getting Help
-- **Documentation**: Comprehensive guides in `/docs` directory
-- **Issues**: Report bugs and request features via GitHub Issues
-- **Discussions**: Community discussions and Q&A
-- **Email**: Direct support for urgent matters
-
-### Community Resources
-- **Referee Training Materials**: Access to official FIFA resources
-- **Best Practices**: Community-driven tips and techniques
-- **Feature Requests**: Suggest improvements and new features
-- **Success Stories**: Share your referee development journey
-
-## 👨‍💻 About the Developer
+##  About the Developer
 
 **Krishaan Bhagat** - University of Wisconsin Madison Student & Experienced Soccer Referee
 
@@ -455,5 +384,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Empowering referees, one decision at a time.** ⚽️🦅
+**Empowering referees, one decision at a time.**
 

@@ -78,7 +78,7 @@ export default function Homepage() {
     <div className="min-h-screen bg-[#F8F9F8]">
       <AchievementNotification />
       {/* Header */}
-      <header className="bg-[#F8F9F8] shadow-sm sticky top-0 z-30 border-b border-[#D9DED9]">
+      <header className="bg-[#F4FAF7] shadow-sm sticky top-0 z-30">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
             {/* Logo */}
@@ -97,12 +97,11 @@ export default function Homepage() {
                   <button
                     key={item.label}
                     onClick={() => handleNavClick(item)}
-                    className="text-[#1B1B1B] hover:text-[#4FA37E] px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                    className="text-[#2F6B4F] hover:text-[#F4B400] px-3 py-2 rounded-md text-sm font-medium transition-colors"
                   >
                     {item.label}
                   </button>
                 ))}
-
               </div>
             </div>
 
@@ -110,7 +109,7 @@ export default function Homepage() {
             <div className="md:hidden">
               <button
                 onClick={() => setShowMenu(!showMenu)}
-                className="text-[#1B1B1B] hover:text-[#4FA37E] p-2"
+                className="text-[#2F6B4F] hover:text-[#F4B400] p-2"
               >
                 <FontAwesomeIcon icon={faBars} className="h-6 w-6" />
               </button>
@@ -120,17 +119,16 @@ export default function Homepage() {
           {/* Mobile Navigation */}
           {showMenu && (
             <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#F8F9F8] border-t border-[#D9DED9]">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#F4FAF7]">
                 {navigationItems.map((item) => (
                   <button
                     key={item.label}
                     onClick={() => handleNavClick(item)}
-                    className="text-[#1B1B1B] hover:text-[#4FA37E] block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    className="text-[#2F6B4F] hover:text-[#F4B400] block px-3 py-2 rounded-md text-base font-medium transition-colors"
                   >
                     {item.label}
                   </button>
                 ))}
-
               </div>
             </div>
           )}
@@ -138,8 +136,17 @@ export default function Homepage() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#2F6B4F] to-[#4FA37E] text-white py-12 sm:py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section
+        className="relative text-white min-h-screen flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/homepageRefereeWalkoutImage.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             Ready to Be a Great Referee?
           </h1>
@@ -150,12 +157,13 @@ export default function Homepage() {
               modules will help you become the referee you want to be.
             </p>
           </div>
-          
           <a
             href="https://www.ussoccer.com/referee-program"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#FFFFFF] text-[#1B1B1B] px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-[#F8F9F8] transition-colors text-sm sm:text-base"
+            className="inline-block bg-[#FFFFFF] text-[#1B1B1B] px-6 sm:px-8 py-3 rounded-lg font-semibold 
+    transition-all duration-300 ease-in-out text-sm sm:text-base
+    hover:bg-[#F4B400] hover:text-white hover:scale-105 hover:shadow-xl shadow-md"
           >
             Join the Referee Team
           </a>
